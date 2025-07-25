@@ -3,6 +3,7 @@ const passport = require('passport');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const authRoutes = require('./routes/authRoutes');
+const organizationRoutes = require('./routes/organizationRoutes');
 require('./passport/googleStrategy');
 require('dotenv').config();
 
@@ -20,7 +21,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/auth', authRoutes);
-
+app.use('/api/organizations', organizationRoutes);
 // Protected example route
 const verifyToken = require('./middleware/jwtAuth');
 app.get('/profile', verifyToken, (req, res) => {
