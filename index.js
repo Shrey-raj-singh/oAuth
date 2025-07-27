@@ -7,6 +7,7 @@ const organizationRoutes = require('./routes/organizationRoutes');
 const classRoutes = require('./routes/classRoutes');
 const studentAssignmentRoutes = require('./routes/studentAssignmentRoutes');
 const reportRoutes = require('./routes/reportRoutes');
+const sharePermissionRoutes = require('./routes/sharePermissionRoutes');
 require('./passport/googleStrategy');
 require('dotenv').config();
 
@@ -28,6 +29,7 @@ app.use('/api/organizations', organizationRoutes);
 app.use('/api/classes', classRoutes);
 app.use('/api/assignments', studentAssignmentRoutes);
 app.use('/api/reports', reportRoutes);
+app.use('/api/shares', sharePermissionRoutes);
 // Protected example route
 const verifyToken = require('./middleware/jwtAuth');
 app.get('/profile', verifyToken, (req, res) => {
